@@ -4,5 +4,6 @@ dist/
 npm-debug.log
 test/unit/coverage
 
+.idea
 
 node_modules
