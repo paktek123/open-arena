@@ -8,11 +8,10 @@ describe('Login.vue', () => {
     let loginAction = fakeActions('login')
     const vm = shallow(Login)
 
-    vm.$refs.username = 'hello'
-    vm.$refs.password = 'secret'
+    vm.username = 'hello'
+    vm.password = 'secret'
 
     simulate(vm.$refs.loginSubmit, 'click')
-
     expect(loginAction).to.have.been.calledOnce.and.calledWith({username: 'hello', password: 'secret'})
   })
 

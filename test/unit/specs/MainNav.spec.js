@@ -1,5 +1,9 @@
-import { beforeEachHooks, afterEachHooks, shallow, fakeGetters, fakeActions, simulate } from 'vue-unit'
+// import { beforeEachHooks, afterEachHooks, shallow, fakeGetters, fakeActions, simulate } from 'vue-unit'
+import { shallow, mockRouter, mockStore } from 'vuenit'
 import MainNav from 'src/components/MainNav'
+
+const {$router} = mockRouter
+
 
 describe('MainNav.vue', () => {
   beforeEach(beforeEachHooks)
