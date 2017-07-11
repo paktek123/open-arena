@@ -5,6 +5,13 @@ import store from './store'
 import MainNav from './components/MainNav.vue'
 import router from './router'
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
+
+axios.defaults.baseURL = 'http://localhost:3000'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

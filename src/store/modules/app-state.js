@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 const store = {
   state: {
     isLoggedIn: false
@@ -17,11 +19,12 @@ const store = {
   actions: {
     login ({commit}, creds) {
       commit('login') // show spinner
-      return new Promise(resolve => {
-        setTimeout(() => {
-          commit('loginSuccess')
-          resolve()
-        }, 1000)
+      console.log('login start')
+      Vue.axios.post('api/login', { username: creds.username, password: creds.password }).then(function (response) {
+        console.log(response)
+        commit('loginSuccess')
+      }, function (error) {
+        console.log(['error', error])
       })
     },
     logout ({commit}) {
