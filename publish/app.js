@@ -6,10 +6,11 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 app.use(cors())
-app.use('/api', api)
 app.use(express.static('static'))
 app.use(bodyParser.json()) // handle json data
 app.use(bodyParser.urlencoded({ extended: true })) // handle URL-encoded data
+
+app.use('/api', api)
 
 app.use(function (req, res, next) {
   const err = new Error('Not Found')
