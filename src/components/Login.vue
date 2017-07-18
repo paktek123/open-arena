@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <form ref="loginForm" @submit.prevent="login({ username, password })">
+    <form ref="loginForm" @submit.prevent="login">
       <input ref="username" type="text" placeholder="username" v-model="username">
       <input ref="password" type="password" placeholder="password" v-model="password">
       <button ref="loginSubmit" type="submit">Login</button>

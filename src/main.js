@@ -2,13 +2,15 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import store from './store'
-import MainNav from './components/MainNav.vue'
 import router from './router'
-
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import SimpleVueValidation from 'simple-vue-validator'
+
+import MainNav from './components/MainNav.vue'
 
 Vue.use(VueAxios, axios)
+Vue.use(SimpleVueValidation)
 
 axios.defaults.baseURL = 'http://localhost:3000'
 

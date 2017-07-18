@@ -17,10 +17,9 @@ const store = {
     }
   },
   actions: {
-    login ({commit}, creds) {
+    login ({commit}, credentials) {
       commit('login') // show spinner
-      console.log('login start')
-      Vue.axios.post('api/login', { username: creds.username, password: creds.password }).then(function (response) {
+      Vue.axios.post('api/login', { username: credentials.username, password: credentials.password }).then(function (response) {
         console.log(response)
         commit('loginSuccess')
       }, function (error) {
@@ -29,6 +28,15 @@ const store = {
     },
     logout ({commit}) {
       commit('logout')
+    },
+    register ({commit}, credentials) {
+      return new Promise((resolve, reject) => {
+        Vue.axios.post('api/register', { username: credentials.username, password: credentials.password, email: credentials.email }).then(function (response) {
+          resolve(response)
+        }, function (error) {
+          reject(error)
+        })
+      })
     }
   },
   getters: {
