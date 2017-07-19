@@ -25,12 +25,12 @@ router.post('/login', function (req, res) {
 
 router.post('/register', function (req, res) {
   const register = new Register()
+
   register.create(req.body.username, req.body.password, req.body.email).then((success) => {
     res.status(200).json({
       success
     })
   }).catch((error) => {
-    console.log(error)
     res.status(400).json({
       error
     })

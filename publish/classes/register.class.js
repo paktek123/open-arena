@@ -13,21 +13,20 @@ export class Register {
   }
 
   create (username, password, email) {
-    const _this = this
-    return new Promise(function () {
-      _this.username = username
-      _this.password = password
-      _this.email = email
+    return new Promise((resolve, reject) => {
+      this.username = username
+      this.password = password
+      this.email = email
 
-      _this.isUsernameTaken()
-        .then(() => { return _this.isEmailUsed() })
-        .then(() => { return _this.isReservedUsername() })
-        .then(() => { return _this.hashPassword() })
-        .then((hashedPassword) => { return _this.createUser(hashedPassword) })
-        .catch((error) => {
-          console.log(error)
-          return error
-        })
+      return this.isUsernameTaken()
+        .then(() => { return this.isEmailUsed() })
+        .then(() => { return this.isReservedUsername() })
+        .then(() => { return this.hashPassword() })
+        .then((hashedPassword) => { return this.createUser(hashedPassword) })
+        .then(resolve)
+        .catch(reject)
+    }).catch((error) => {
+      return Promise.reject(error)
     })
   }
 
