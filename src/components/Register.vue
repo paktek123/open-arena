@@ -10,6 +10,8 @@
       <div class="message">{{ validation.firstError('username') }}</div>
       <input ref="password" type="password" placeholder="Password" name="password" v-model="password">
       <div class="message">{{ validation.firstError('password') }}</div>
+      <input ref="confirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" v-model="password">
+      <div class="message">{{ validation.firstError('confirmPassword') }}</div>
       <button ref="registerSubmit" type="submit" @click="register">Register</button>
     </div>
   </transition>
@@ -25,6 +27,7 @@
         confirmEmail: '',
         username: '',
         password: '',
+        confirmPassword: '',
         registrationError: '',
         submitted: false
       }
@@ -43,6 +46,11 @@
       },
       password: function (value) {
         return Validator.value(value).required()
+      },
+      'confirmPassword, password' (confirmPassword, password) {
+        if (this.submitted || this.validation.isTouched('confirmPassword')) {
+          return Validator.value(confirmPassword).required().match(password)
+        }
       }
     },
     methods: {

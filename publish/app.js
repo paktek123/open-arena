@@ -18,11 +18,6 @@ app.use(function (req, res, next) {
 })
 
 models.sequelize.sync().then(function () {
-  // Example of how to user the models
-  models.User.findById(1).then(user => {
-    console.log('User is ' + user.username)
-  })
-
   app.listen(3000, function () {
     console.log('Listening on port 3000!')
   })
