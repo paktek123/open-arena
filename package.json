@@ -23,6 +23,7 @@
     "vee-validate": "^2.0.0-rc.7",
     "vue": "^2.1.0",
     "vue-axios": "^2.0.2",
+    "vue-progress": "^0.2.1",
     "vue-router": "^2.7.0",
     "vuex": "^2.3.1"
   },
